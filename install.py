@@ -55,11 +55,6 @@ def download(url, path, name):
     with tqdm(total=total, desc=f'[ReActor] Downloading {name} to {path}', unit='B', unit_scale=True, unit_divisor=1024) as progress:
         urllib.request.urlretrieve(url, path, reporthook=lambda count, block_size, total_size: progress.update(block_size))
 
-if not os.path.exists(models_dir_path):
-    os.makedirs(models_dir_path)
-
-if not os.path.exists(model_path):
-    download(model_url, model_path, model_name)
 
 with open(req_file) as file:
     try:
